@@ -1,22 +1,88 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.title | escape }}</title>
+    <meta name="description" content="Sunbeam metagenomics analysis pipeline">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="canonical" href="http://sunbeam-labs.org">
+  </head>
+  <body>
 
-Sunbeam is a bioinformatics analysis pipeline that supports
+    <header class="site-header" role="banner">
+      <div class="wrapper">
+        <a class="site-title" href="{{ site.baseurl }}/">{{ site.title | escape }}</a>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+
+<p>Sunbeam is a bioinformatics analysis pipeline that supports
 reproducible analysis of shotgun metagenomics data sets. Its main
 feature is easy-to-make extensions, which allow users to specify
 additional functionality for the pipeline with only a few lines of
-code.
+code.</p>
 
-## Extensions
+<h2>Extensions</h2>
 
-{% for item in site.data.repos %}
-[{{ item.repo }}](https://github.com/{{ item.user }}/{{ item.repo }})
+<ul id="exts">
+</ul>
 
-Targets: {{ item.target }}
 
-  - Last update: {{ item.updated_at }}
-  - Watchers: {{ item.watchers_count }}
-  - Open issues: {{ item.open_issues }}
+      </div>
+    </main>
 
-{% endfor %}
+    <script type="text/javascript" src="https://cdn.bootcss.com/rest.js/15.2.6/octokit-rest.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/2.3.7/cash.min.js"></script>
+    <script>
+      $(function () {
+      const octokit = new Octokit();
+      var repos = [
+        {owner: "sunbeam-labs", repo: "sbx_report"},
+        {owner: "sunbeam-labs", repo: "sbx_contigs"},
+        {owner: "sunbeam-labs", repo: "sbx_metaphlan"},
+        {owner: "sunbeam-labs", repo: "sbx_shortbred"},
+        {owner: "sunbeam-labs", repo: "sbx_gene_clusters"},
+        {owner: "sunbeam-labs", repo: "sbx_spades"},
+        {owner: "sunbeam-labs", repo: "sbx_anvio"},
+        {owner: "sunbeam-labs", repo: "sbx_krakenhll"},
+        {owner: "sunbeam-labs", repo: "sbx_igv"},
+        {owner: "sunbeam-labs", repo: "sbx_kaiju"},
+        {owner: "louiejtaylor", repo: "sbx_rgi"},
+      ];
+      $('html').addClass('dom-loaded');
+      var exts_list = $("#exts");
+      repos.forEach(function (item) {
+        var url = "https://github.com/" + item.owner + "/" + item.repo
+        var repo_card = $("<li/>");
+        repo_card.append("<a href=\"" + url + "\">" + item.repo + "</a>");
+
+        octokit.repos.get({
+          owner: item.owner,
+          repo: item.repo
+        }).then(({data, headers, status}) => {
+          var repo_info = $("<ul/>");
+          if (data.description === null) {
+            desc = "&nbsp;";
+          } else {
+            desc = data.description;
+          }
+          repo_info.append(
+            "<li>Description: " + desc + "</li>",
+            "<li>Last update: " + data.updated_at + "</li>",
+            "<li>Watchers: " + data.watchers_count + "</li>",
+            "<li>Open issues: " + data.open_issues_count + "</li>"
+          );
+          repo_info.appendTo(repo_card);
+        })
+
+        repo_card.appendTo(exts_list);
+
+      })
+    });
+    </script>
+  </body>
+</html>
