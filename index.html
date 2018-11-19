@@ -14,9 +14,6 @@ code.</p>
 </ul>
 
 
-      </div>
-    </main>
-
     <script type="text/javascript" src="https://cdn.bootcss.com/rest.js/15.2.6/octokit-rest.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/2.3.7/cash.min.js"></script>
     <script>
@@ -35,7 +32,6 @@ code.</p>
         {owner: "sunbeam-labs", repo: "sbx_kaiju"},
         {owner: "louiejtaylor", repo: "sbx_rgi"},
       ];
-      $('html').addClass('dom-loaded');
       var exts_list = $("#exts");
       repos.forEach(function (item) {
         var url = "https://github.com/" + item.owner + "/" + item.repo
