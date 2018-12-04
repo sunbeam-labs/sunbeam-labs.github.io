@@ -1,0 +1,13 @@
+[
+    {"owner": "sunbeam-labs", "repo": "sbx_report"},
+    {"owner": "sunbeam-labs", "repo": "sbx_contigs"},
+    {"owner": "sunbeam-labs", "repo": "sbx_metaphlan"},
+    {"owner": "sunbeam-labs", "repo": "sbx_shortbred"},
+    {"owner": "sunbeam-labs", "repo": "sbx_gene_clusters"},
+    {"owner": "sunbeam-labs", "repo": "sbx_spades"},
+    {"owner": "sunbeam-labs", "repo": "sbx_anvio"},
+    {"owner": "sunbeam-labs", "repo": "sbx_krakenhll"},
+    {"owner": "sunbeam-labs", "repo": "sbx_igv"},
+    {"owner": "sunbeam-labs", "repo": "sbx_kaiju"},
+    {"owner": "louiejtaylor", "repo": "sbx_rgi"}
+]

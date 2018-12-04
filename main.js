@@ -51,25 +51,11 @@ const get_rules_targets = function (file_info) {
     return find_sunbeam_targets(rules_txt);
 };
 
-const repos = [
-    {owner: "sunbeam-labs", repo: "sbx_report"},
-    {owner: "sunbeam-labs", repo: "sbx_contigs"},
-    {owner: "sunbeam-labs", repo: "sbx_metaphlan"},
-    {owner: "sunbeam-labs", repo: "sbx_shortbred"},
-    {owner: "sunbeam-labs", repo: "sbx_gene_clusters"},
-    {owner: "sunbeam-labs", repo: "sbx_spades"},
-    {owner: "sunbeam-labs", repo: "sbx_anvio"},
-    {owner: "sunbeam-labs", repo: "sbx_krakenhll"},
-    {owner: "sunbeam-labs", repo: "sbx_igv"},
-    {owner: "sunbeam-labs", repo: "sbx_kaiju"},
-    {owner: "louiejtaylor", repo: "sbx_rgi"}
-];
-
 const github_url = function ({owner, repo}) {
     return "https://github.com/" + owner + "/" + repo;
 };
 
-$(function () {
+const extensions_main = function () {
     const octokit = new Octokit();
 
     const get_repo_files = function (repo_info) {
@@ -83,7 +69,8 @@ $(function () {
     };
 
     const exts_list = $("#exts");
-    repos.forEach(function (repo_info) {
+
+    const process_repo = function (repo_info) {
         const repo_card = $("<div/>");
         repo_card.appendTo(exts_list);
 
@@ -148,5 +135,9 @@ $(function () {
                 get_repo_file_contents(repo_info, file_info).then(inject_targets);
             });
         });
+    };
+
+    $.getJSON("extensions.json", function (repos) {
+        return repos.forEach(process_repo);
     });
-});
+};
