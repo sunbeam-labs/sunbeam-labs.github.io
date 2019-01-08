@@ -1,25 +1,27 @@
 const sunbeam_targets = {
-    FASTQC_SUMMARY: [
+    SEQUENCE_QUALITY_TABLE: [
         "str(QC_FP/'reports'/'fastqc_quality.tsv')",
     ],
-    DECONTAM_SUMMARY: [
+    SAMPLE_ATTRITION_TABLE: [
         "str(QC_FP/'reports'/'preprocess_summary.tsv')",
     ],
-    KRAKEN_SUMMARY: [
+    KRAKEN_ASSIGNMENTS_TABLE: [
         "str(CLASSIFY_FP/'kraken'/'all_samples.tsv')",
     ],
-    DECONTAM_FASTQ: [
+    QUALITY_CONTROLLED_FASTQ: [
+        "str(QC_FP/'cleaned'/'{sample}_{rp}.fastq.gz')",
+    ],
+    DECONTAMINATED_FASTQ: [
         "str(QC_FP/'decontam'/'{sample}_{rp}.fastq.gz')",
-        "str(QC_FP/'decontam'/'{sample}_1.fastq.gz')",
-        "str(QC_FP/'decontam'/'{sample}_2.fastq.gz')",
-        "str(QC_FP/'decontam'/'{sample}_R1.fastq.gz')",
-        "str(QC_FP/'decontam'/'{sample}_R2.fastq.gz')"
     ],
     CONTIG_FASTA: [
         "str(ASSEMBLY_FP/'contigs'/'{sample}-contigs.fa')",
     ],
-    PROTEIN_FASTA: [
+    ORF_PROTEIN_FASTA: [
         "str(ANNOTATION_FP/'genes'/'prodigal'/'{sample}_genes_prot.fa')",
+    ],
+    ORF_NUCLEOTIDE_FASTA: [
+        "str(ANNOTATION_FP/'genes'/'prodigal'/'{sample}_genes_nucl.fa')",
     ]
 };
 
