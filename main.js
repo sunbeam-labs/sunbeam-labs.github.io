@@ -7,12 +7,17 @@ const sunbeam_targets = {
     ],
     KRAKEN_ASSIGNMENTS_TABLE: [
         "str(CLASSIFY_FP/'kraken'/'all_samples.tsv')",
+        "str(CLASSIFY_FP/'kraken'/'all_samples.biom')",
     ],
     QUALITY_CONTROLLED_FASTQ: [
         "str(QC_FP/'cleaned'/'{sample}_{rp}.fastq.gz')",
+        "str(QC_FP/'cleaned'/'{sample}_1.fastq.gz')",
+        "str(QC_FP/'cleaned'/'{sample}_2.fastq.gz')",
     ],
     DECONTAMINATED_FASTQ: [
         "str(QC_FP/'decontam'/'{sample}_{rp}.fastq.gz')",
+        "str(QC_FP/'decontam'/'{sample}_1.fastq.gz')",
+        "str(QC_FP/'decontam'/'{sample}_2.fastq.gz')",
     ],
     CONTIG_FASTA: [
         "str(ASSEMBLY_FP/'contigs'/'{sample}-contigs.fa')",
@@ -22,7 +27,13 @@ const sunbeam_targets = {
     ],
     ORF_NUCLEOTIDE_FASTA: [
         "str(ANNOTATION_FP/'genes'/'prodigal'/'{sample}_genes_nucl.fa')",
-    ]
+    ],
+    MAPPING_BAM: [
+        "str(MAPPING_FP/'{genome}'/'{sample}.bam')",
+    ],
+    MAPPING_SAM: [
+        "str(MAPPING_FP/'intermediates'/'{genome}'/'{sample}.sam')",
+    ],
 };
 
 const find_sunbeam_targets = function (rules_txt) {
