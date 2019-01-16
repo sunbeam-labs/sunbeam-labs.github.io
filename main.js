@@ -32,11 +32,13 @@ const sunbeam_targets = {
     ],
     QUALITY_CONTROLLED_FASTQ: [
         "str(QC_FP/'cleaned'/'{sample}_{rp}.fastq.gz')",
+        "str(QC_FP/'cleaned'/'{{sample}}_{rp}.fastq.gz')",
         "str(QC_FP/'cleaned'/'{sample}_1.fastq.gz')",
         "str(QC_FP/'cleaned'/'{sample}_2.fastq.gz')",
     ],
     DECONTAMINATED_FASTQ: [
         "str(QC_FP/'decontam'/'{sample}_{rp}.fastq.gz')",
+        "str(QC_FP/'decontam'/'{{sample}}_{rp}.fastq.gz')",
         "str(QC_FP/'decontam'/'{sample}_1.fastq.gz')",
         "str(QC_FP/'decontam'/'{sample}_2.fastq.gz')",
     ],
@@ -51,6 +53,7 @@ const sunbeam_targets = {
     ],
     MAPPING_BAM: [
         "str(MAPPING_FP/'{genome}'/'{sample}.bam')",
+        "str(MAPPING_FP/'{{genome}}'/'{sample}.bam')",
     ],
     MAPPING_SAM: [
         "str(MAPPING_FP/'intermediates'/'{genome}'/'{sample}.sam')",
