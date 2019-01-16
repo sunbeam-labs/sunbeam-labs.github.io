@@ -105,7 +105,9 @@ const extensions_main = function () {
     const exts_list = $("#exts");
 
     const process_repo = function (repo_info) {
-        const repo_card = $("<div/>");
+        const repo_card = $("<div/>", {
+            class: "repo",
+        });
         repo_card.appendTo(exts_list);
 
         const repo_header = $("<h3/>");
@@ -133,7 +135,7 @@ const extensions_main = function () {
             const desc = data.description || "&nbsp;";
             container.append(
                 "<li>Description: " + desc + "</li>",
-                "<li>Last update: " + data.updated_at + "</li>",
+                "<li>Last update: " + data.updated_at.substring(0, 10) + "</li>",
                 "<li>Watchers: " + data.watchers_count + "</li>",
                 "<li>Open issues: " + data.open_issues_count + "</li>"
             );
@@ -143,6 +145,7 @@ const extensions_main = function () {
         const inject_targets = function ({data}) {
             const rules_container = $("<div/>");
 
+            rules_container.append("Sunbeam outputs used in ");
             const header = $("<em/>");
             header.text(data.path);
             rules_container.append(header);
@@ -156,6 +159,9 @@ const extensions_main = function () {
             targets.map((target) => {
                 target_list.append("<li>" + target + "</li>");
             });
+            if (targets.length == 0) {
+                target_list.html("<em>None found.</em>");
+            }
             rules_container.append(target_list);
 
             rules_container.appendTo(rules_div);
