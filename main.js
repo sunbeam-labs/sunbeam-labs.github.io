@@ -1,3 +1,24 @@
+const sunbeam_extensions = [
+    {"owner": "sunbeam-labs", "repo": "sbx_report"},
+    {"owner": "sunbeam-labs", "repo": "sbx_subsample"},
+    {"owner": "sunbeam-labs", "repo": "sbx_coassembly"},
+    {"owner": "sunbeam-labs", "repo": "sbx_metaphlan"},
+    {"owner": "sunbeam-labs", "repo": "sbx_kaiju"},
+    {"owner": "sunbeam-labs", "repo": "sbx_anvio"},
+    {"owner": "sunbeam-labs", "repo": "sbx_contigs"},
+    {"owner": "sunbeam-labs", "repo": "sbx_spades"},
+    {"owner": "sunbeam-labs", "repo": "sbx_shortbred"},
+    {"owner": "sunbeam-labs", "repo": "sbx_gene_clusters"},
+    {"owner": "sunbeam-labs", "repo": "sbx_krakenhll"},
+    {"owner": "sunbeam-labs", "repo": "sbx_igv"},
+    {"owner": "louiejtaylor", "repo": "sbx_rgi"},
+    {"owner": "ArwaAbbas", "repo": "sbx_eggnog"},
+    {"owner": "louiejtaylor", "repo": "sbx_mccann2018"},
+    {"owner": "louiejtaylor", "repo": "sbx_bahram2018"},
+    {"owner": "louiejtaylor", "repo": "sbx_lewis2015"},
+    {"owner": "junglee0713", "repo": "sbx_shallowshotgun_pilot"},
+];
+
 const sunbeam_targets = {
     SEQUENCE_QUALITY_TABLE: [
         "str(QC_FP/'reports'/'fastqc_quality.tsv')",
@@ -150,7 +171,5 @@ const extensions_main = function () {
         });
     };
 
-    $.getJSON("extensions.json", function (repos) {
-        return repos.forEach(process_repo);
-    });
+    sunbeam_extensions.forEach(process_repo);
 };
