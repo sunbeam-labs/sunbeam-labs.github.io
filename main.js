@@ -1,9 +1,9 @@
 const sunbeam_extensions = [
     {"owner": "sunbeam-labs", "repo": "sbx_report"},
-    {"owner": "sunbeam-labs", "repo": "sbx_subsample"},
     {"owner": "sunbeam-labs", "repo": "sbx_coassembly"},
     {"owner": "sunbeam-labs", "repo": "sbx_metaphlan"},
     {"owner": "sunbeam-labs", "repo": "sbx_kaiju"},
+    {"owner": "sunbeam-labs", "repo": "sbx_subsample"},
     {"owner": "sunbeam-labs", "repo": "sbx_anvio"},
     {"owner": "sunbeam-labs", "repo": "sbx_contigs"},
     {"owner": "sunbeam-labs", "repo": "sbx_spades"},
@@ -89,7 +89,15 @@ const github_url = function ({owner, repo}) {
     return "https://github.com/" + owner + "/" + repo;
 };
 
-const extensions_main = function () {
+const featured_extensions_main = function () {
+    inject_extensions(3);
+}
+
+const all_extensions_main = function () {
+    inject_extensions(null);
+}
+
+const inject_extensions = function (n) {
     const octokit = new Octokit();
 
     const get_repo_files = function (repo_info) {
@@ -177,5 +185,9 @@ const extensions_main = function () {
         });
     };
 
-    sunbeam_extensions.forEach(process_repo);
+    repos_to_inject = sunbeam_extensions;
+    if (n !== null) {
+        repos_to_inject = repos_to_inject.slice(0, n);
+    }
+    repos_to_inject.forEach(process_repo);
 };
