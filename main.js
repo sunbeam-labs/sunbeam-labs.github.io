@@ -17,6 +17,7 @@ const sunbeam_extensions = [
     {"owner": "louiejtaylor", "repo": "sbx_bahram2018"},
     {"owner": "louiejtaylor", "repo": "sbx_lewis2015"},
     {"owner": "junglee0713", "repo": "sbx_shallowshotgun_pilot"},
+    {"owner": "guanzhidao", "repo": "sbx_dedup"},
 ];
 
 const sunbeam_targets = {
