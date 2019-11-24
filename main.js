@@ -18,6 +18,7 @@ const sunbeam_extensions = [
     {"owner": "louiejtaylor", "repo": "sbx_lewis2015"},
     {"owner": "junglee0713", "repo": "sbx_shallowshotgun_pilot"},
     {"owner": "guanzhidao", "repo": "sbx_dedup"},
+    {"owner": "ArwaAbbas", "repo": "sbx_select_contigs"},
 ];
 
 const sunbeam_targets = {
@@ -58,6 +59,9 @@ const sunbeam_targets = {
     ],
     MAPPING_SAM: [
         "str(MAPPING_FP/'intermediates'/'{genome}'/'{sample}.sam')",
+    ],
+    CONTIG_ANNOTATIONS: [
+        "str(ANNOTATION_FP/'summary'/'{sample}.tsv')",
     ],
 };
 
