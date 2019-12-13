@@ -9,7 +9,7 @@ const sunbeam_extensions = [
     {"owner": "sunbeam-labs", "repo": "sbx_spades"},
     {"owner": "sunbeam-labs", "repo": "sbx_shortbred"},
     {"owner": "sunbeam-labs", "repo": "sbx_gene_clusters"},
-    {"owner": "sunbeam-labs", "repo": "sbx_krakenhll"},
+    {"owner": "ArwaAbbas", "repo": "sbx_kraken_uniq"},
     {"owner": "sunbeam-labs", "repo": "sbx_igv"},
     {"owner": "louiejtaylor", "repo": "sbx_rgi"},
     {"owner": "ArwaAbbas", "repo": "sbx_eggnog"},
