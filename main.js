@@ -1,4 +1,6 @@
 const sunbeam_extensions = [
+    {"owner": "scottdaniel", "repo": "sbx_demic"},
+    {"owner": "scottdaniel", "repo": "sbx_vsearch"},
     {"owner": "sunbeam-labs", "repo": "sbx_report"},
     {"owner": "sunbeam-labs", "repo": "sbx_coassembly"},
     {"owner": "sunbeam-labs", "repo": "sbx_metaphlan"},
